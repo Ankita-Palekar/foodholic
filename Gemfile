@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-
 gem "sass"
 gem "sinatra"
 gem "pg"	#for postgres
@@ -8,4 +7,7 @@ gem "sinatra-activerecord"
 gem "json"
 gem "string_to_sha1"
 gem "sinatra-flash"
+gem "sinatra-contrib"
 gem "pony"
+
+#TODO require it useing the bundler
