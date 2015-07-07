@@ -4,7 +4,7 @@ require 'sinatra/reloader' if development?
 require 'sinatra/base'
 require 'sinatra/activerecord'
 require 'digest/sha1'
-require 'sinatra/flash'
+# require 'sinatra/flash'
 require './models/user.rb'
 require './models/recipie.rb'
 require './models/rating.rb'
@@ -41,7 +41,6 @@ configure :production do
 	) 
 end
 
-
 # will enable session when logging in 
 
 configure do
@@ -53,14 +52,11 @@ get '/signup' do
 end
    
 post '/signup' do
-	@encrypted_password= User.encrypt(params[:post][:password])
-	@array  = params[:post].slice("name","email") 
-	@array["encrypted_password"] = @encrypted_password
-	@user = User.create(@array)
-	if @user.save!
-		 erb :login
+	@user = User.new(params)
+	if @user.save
+		erb :home	
 	else
-		 erb :signup
+		"#{@user.errors.messages}"
 	end
 end
 
@@ -74,15 +70,17 @@ end
 
 post '/login' do
 	@user = User.find_by_email(params[:email])
-	@user_pasword = User.encrypt(params[:password])
-	
-	if @user_pasword==@user.encrypted_password
- 		@id = @user.id
- 		session[:login] = true
- 		session[:id] = @id
- 		redirect ("/home")
+
+	if @user && @user.authenticate(params[:password])
+ 		"youare logged in "
+ 		# @id = @user.id
+ 		# session[:login] = true
+ 		# session[:id] = @id
+ 		# redirect ("/home")
 	else
-		erb :login
+		# erb :login
+		# 
+		 "wrong creds"
 	end
 end
 

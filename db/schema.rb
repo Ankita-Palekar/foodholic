@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150706215447) do
+ActiveRecord::Schema.define(:version => 20150707111426) do
 
   create_table "ratings", :force => true do |t|
     t.integer  "user_id"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(:version => 20150706215447) do
     t.text     "ingredients"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "methods"
+    t.text     "method"
   end
 
   add_index "recipies", ["user_id"], :name => "index_recipies_on_user_id"
@@ -41,9 +41,9 @@ ActiveRecord::Schema.define(:version => 20150706215447) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "name",               :limit => nil
-    t.string   "email",              :limit => nil, :null => false
-    t.string   "encrypted_password", :limit => nil, :null => false
+    t.string   "name",            :limit => nil
+    t.string   "email",           :limit => nil, :null => false
+    t.string   "password_digest", :limit => nil, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

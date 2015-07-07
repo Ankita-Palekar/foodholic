@@ -14,9 +14,18 @@ GEM
       multi_json (~> 1.0)
     arel (3.0.3)
     backports (3.6.4)
+    bcrypt-ruby (3.0.1)
     builder (3.0.4)
+    celluloid (0.16.0)
+      timers (~> 4.0.0)
+    ffi (1.9.10)
+    hitimes (1.2.2)
     i18n (0.7.0)
     json (1.8.3)
+    listen (2.10.1)
+      celluloid (~> 0.16.0)
+      rb-fsevent (>= 0.9.3)
+      rb-inotify (>= 0.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     mime-types (2.6.1)
@@ -25,10 +34,17 @@ GEM
     pony (1.11)
       mail (>= 2.0)
     rack (1.6.4)
+    rack-flash3 (1.0.5)
+      rack
     rack-protection (1.5.3)
       rack
     rack-test (0.6.3)
       rack (>= 1.0)
+    rb-fsevent (0.9.5)
+    rb-inotify (0.9.5)
+      ffi (>= 0.5.0)
+    rerun (0.10.0)
+      listen (~> 2.7, >= 2.7.3)
     sass (3.4.15)
     sinatra (1.4.6)
       rack (~> 1.4)
@@ -44,10 +60,10 @@ GEM
       rack-test
       sinatra (~> 1.4.0)
       tilt (>= 1.3, < 3)
-    sinatra-flash (0.3.0)
-      sinatra (>= 1.0.0)
     string_to_sha1 (1.0.0)
     tilt (2.0.1)
+    timers (4.0.1)
+      hitimes
     tzinfo (0.3.44)
 
 PLATFORMS
@@ -55,12 +71,14 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord (= 3.2.21)
+  bcrypt-ruby (~> 3.0.0)
   json
   pg
   pony
+  rack-flash3
+  rerun
   sass
   sinatra
   sinatra-activerecord
   sinatra-contrib
-  sinatra-flash
   string_to_sha1

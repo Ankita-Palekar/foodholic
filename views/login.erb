@@ -1,5 +1,9 @@
-<form action="/login" method="post">
-	<label for="name">Email:</label> <input type="text" name="email">
-	<label for="password">Password:</label> <input type="password" name="password">
-	<input type="submit" >
-</form>
+<% if flash[:notice]  
+		"#{flash[:notice]}"
+	else %>
+	<form action="/login" method="post">
+		<label for="name">Email:</label> <input type="text" name="email">
+		<label for="password">Password:</label> <input type="password" name="password">
+		<input type="submit" >
+	</form>
+<% end %>

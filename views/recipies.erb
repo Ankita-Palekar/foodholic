@@ -1,0 +1,9 @@
+<% if !@recipies.blank? %>
+  <% for @recipie in @recipies %>
+     <%= @recipie.title  %>
+  <% end %>
+<% else %>
+  <p>No recipies to be shown</p>
+<% end %>
+
+ 

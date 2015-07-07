@@ -1,10 +1,10 @@
-<form action="/recipie/new" method="post">
+<form action="/recipies/create" method="post">
 	<label for="title">:title</label>
 	<input type="text" name="title">
 	<label for="Ingredients">:Ingredients</label>
-	<input type="text" name="ingredients">
-	<label for="methods">Method:</label>
-	<textarea name="methods" id="" cols="30" rows="10">
+	<input type="textarea" name="ingredients">
+	<label for="method">Method:</label>
+	<textarea name="method" id="" cols="30" rows="10">
 	</textarea>
 	<input type="hidden" name="user_id" value=<%= session[:id]%>>
 	<input type="hidden" name="login" value=<%= session[:login]%>>
