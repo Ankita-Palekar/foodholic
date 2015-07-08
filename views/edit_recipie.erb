@@ -8,7 +8,7 @@
 	<textarea name="method" cols="30" rows="10" >
 		<%= @recipie.method  %>
 	</textarea>
-	<input type="hidden" name="user_id" value=<%= session[:id]%>>
-	<input type="hidden" name="login" value=<%= session[:login]%>>
+	<input type="hidden" name="user_id" value=<%= cookies[:id]%>>
+	<input type="hidden" name="login" value=<%= cookies[:login]%>>
 	<input type="submit">
 </form> 

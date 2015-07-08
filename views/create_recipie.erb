@@ -16,20 +16,25 @@
 
 <div class="row">
 	<div class="span12">
-		<form>	
- 			<label for="title">Recipie Title</label>
-	    <input type="title" placeholder="title">
-	    
-			<label for="ingredients">ingredients</label>
-	    <textarea name="ingredients" rows="5"></textarea>
-	    
-	    <label for="title">Method</label>
-	    <textarea name="method"   rows="10"></textarea>
-	    
-
+		<form action="/recipies/create" method="post">	
+			<div class="controls">
+	 			<label for="title">Recipie Title</label>
+		    <input class="span5" type="title" placeholder="title">
+			</div>
+	    <div class="control">
+				<label for="ingredients">ingredients</label>
+		    <textarea class="span5" name="ingredients" rows="3" col="20"></textarea>
+	    </div>
+	    <div class="controls">
+		    <label for="title">Method</label>
+		    <textarea class="span6" name="method"   rows="10" col="20"></textarea>
+	    </div>
+	    <div class="controls">
+	    	<input type="hidden" name="user_id" value=<%= cookies[:id]%>>
+	    	<input type="hidden" name="login" value=<%= cookies[:login]%>>
+	    </div>
+	    <br>
 	    <button type="submit" class="btn">Submit</button>
-
-
 		</form>
 	</div>
 </div>

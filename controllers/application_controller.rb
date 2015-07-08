@@ -6,15 +6,18 @@ class ApplicationController < Sinatra::Base
 	register Sinatra::Twitter::Bootstrap::Assets
 	use Rack::Flash
 
-	# helpers Sinatra::RedirectWithFlash
+	helpers Sinatra::Cookies
+	
 
 	not_found{erb :not_found}
 
 	helpers do
 		def admin?
-			session[:login]
+			session[:login] | cookies[:login]
 		end
 	end
+
+
 
 	get '/login' do
 		erb :login, :layout => :auth_layout
@@ -26,6 +29,8 @@ class ApplicationController < Sinatra::Base
  	 		@id = @user.id
  	 		session[:login] = true
  	 		session[:id] = @id
+ 	 		cookies[:login] = true
+ 	 		cookies[:id] = @id
  	 		redirect ("/home")
 	 	else
 	 		flash[:notice] = "EmailId password do not match"  
@@ -68,6 +73,8 @@ class ApplicationController < Sinatra::Base
 
  	get '/logout' do
  		session[:login] = false
+ 		cookies[:login] = false
+ 		cookies[:id] = nil
  		session.clear
  		erb :login
  	end

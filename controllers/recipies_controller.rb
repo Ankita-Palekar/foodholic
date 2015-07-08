@@ -1,5 +1,10 @@
 class RecipiesController < ApplicationController
 
+	configure do
+		enable :sessions 
+	end
+
+
 	get '/' do
 	# @recipies  = Recipie.includes(:ratings).order("created_at DESC").all
 	@recipies  = Recipie.joins("Left outer  join ratings on ratings.recipie_id = recipies.id").select("recipies.id, recipies.title, recipies.ingredients, recipies.method, count(ratings.recipie_id) as rate").group("recipies.id").order("rate desc, recipies.created_at asc")
@@ -29,7 +34,7 @@ class RecipiesController < ApplicationController
 			end		 
 		else
 			flash[:notice] = "Session expired"
-			erb :login	
+			redirect '/login'	
 		end
 	end
 
@@ -50,7 +55,7 @@ class RecipiesController < ApplicationController
 			end
 		else
 			flash[:notice] = "Session expired"
-			erb :login
+			redirect '/login'
 		end
 	end
 end
