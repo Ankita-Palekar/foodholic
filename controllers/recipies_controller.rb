@@ -1,7 +1,8 @@
 class RecipiesController < ApplicationController
 
 	get '/' do
-		@recipies  = Recipie.all
+	# @recipies  = Recipie.includes(:ratings).order("created_at DESC").all
+	@recipies  = Recipie.joins("Left outer  join ratings on ratings.recipie_id = recipies.id").select("recipies.id, recipies.title, recipies.ingredients, recipies.method, count(ratings.recipie_id) as rate").group("recipies.id").order("rate desc, recipies.created_at asc")
 		erb :recipies
 	end
 
@@ -19,12 +20,17 @@ class RecipiesController < ApplicationController
 		@user_id = params[:user_id]
 		@rec_array = params.slice("title",	"method",	"ingredients",	"user_id")
 		@recipie = Recipie.create(@rec_array)
-		 # TODO needs to check if session exists before saving
-		if @recipie.save
-			redirect "/recipies/#{@recipie.id}" 
+		if admin?
+			if @recipie.save
+				redirect "/recipies/#{@recipie.id}" 
+			else
+				flash[:error] = @recipie.errors.full_messages
+				erb :create_recipie
+			end		 
 		else
-			erb :create_recipie
-		end		 
+			flash[:notice] = "Session expired"
+			erb :login	
+		end
 	end
 
 	get	'/edit/:id'	do
@@ -35,11 +41,16 @@ class RecipiesController < ApplicationController
 	post '/edit/:id'	do
 		@recipie = Recipie.find(params[:id])
 		@recipie.update_attributes(params.slice("title", "ingredients", "method", "user_id"))
-		if @recipie.save
-			redirect "/recipies/#{@recipie.id}" 
+		if admin?
+			if @recipie.save
+				redirect "/recipies/#{@recipie.id}" 
+			else
+				flash[:error] = @recipie.errors.full_messages
+				erb :edit_recipie
+			end
 		else
-			"cannot be edited"
+			flash[:notice] = "Session expired"
+			erb :login
 		end
 	end
-
 end

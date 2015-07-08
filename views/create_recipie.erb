@@ -1,3 +1,5 @@
+
+<!-- 
 <form action="/recipies/create" method="post">
 	<label for="title">:title</label>
 	<input type="text" name="title">
@@ -10,3 +12,28 @@
 	<input type="hidden" name="login" value=<%= session[:login]%>>
 	<input type="submit">
 </form> 
+ -->
+
+<div class="row">
+	<div class="span12">
+		<form>	
+ 			<label for="title">Recipie Title</label>
+	    <input type="title" placeholder="title">
+	    
+			<label for="ingredients">ingredients</label>
+	    <textarea name="ingredients" rows="5"></textarea>
+	    
+	    <label for="title">Method</label>
+	    <textarea name="method"   rows="10"></textarea>
+	    
+
+	    <button type="submit" class="btn">Submit</button>
+
+
+		</form>
+	</div>
+</div>
+
+
+
+

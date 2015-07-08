@@ -1,2 +1,21 @@
-
-<%= @recipie.title %>
+ 
+<div class="span12">
+	<div class="row">
+ 		<div class="page-header">
+			<h1>	
+				<%= @recipie.title %>
+			</h1>
+ 		</div>
+		<img src="http://lorempixel.com/400/200/food/" alt="">
+		<h3> Ingredients </h3>
+		<hr>
+		<p>
+			<%= @recipie.ingredients %>
+		</p>
+		<h3>Method</h3>
+		<hr>
+		<p>
+			<%=  @recipie.method %>
+		</p>
+	</div>
+</div>

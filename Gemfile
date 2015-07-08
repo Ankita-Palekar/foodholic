@@ -8,8 +8,11 @@ gem "json"
 gem "string_to_sha1"
 gem "sinatra-contrib"
 gem 'rack-flash3'
+gem 'sinatra-redirect-with-flash', '~> 0.2.1'
 gem "pony"
 gem "bcrypt-ruby",	'~>3.0.0'
 gem "rerun"
+gem "shotgun", '~>0.9.1'
+gem 'sinatra-twitter-bootstrap', '~> 2.3.2'
 
 #TODO require it useing the bundler

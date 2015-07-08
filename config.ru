@@ -5,10 +5,13 @@
 
 require "./config/environment"
 use Rack::Session::Cookie, 
-   :key => 'id',
    :path => '/',
    :expire_after => 14400, # In seconds
-	 :secret => 'change_me'
+	 :secret => 'session_set'
+
+map "/public" do
+ run Rack::Directory.new("./public")
+end
 
 map "/user" do
 	run UserController 

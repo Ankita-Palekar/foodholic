@@ -1,4 +1,6 @@
-<form action="/signup" method="POST">
+ 
+
+<!-- <form action="/signup" method="POST">
   Name: <input type="text" name="name" required>
   <br/>
   email	: <input name="email" type="email" required>
@@ -8,3 +10,52 @@
   confirm passowrd : <input type="password" name="password_confirmation" required>
   <input type="submit">
 </form>
+ -->
+
+ <div class="row"> 
+  <div class="span12">
+    <div class="span4 offset3">
+       <form class="form-horizontal" action="/signup" method="POST">
+        <div class="control-groups">
+          <div class="controls">
+            <% if flash[:error]  %>
+              <div class="alert alert-error">
+                <%=   "#{flash[:error]}" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="inputEmail">Name</label>
+          <div class="controls">
+            <input type="text" name="name" id="inputEmail" placeholder="Email">
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="inputEmail">Email</label>
+          <div class="controls">
+            <input type="text" name="email" id="inputEmail" placeholder="Email">
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="inputPassword">Password</label>
+          <div class="controls">
+            <input type="password" id="inputPassword" name="password" placeholder="Password">
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="inputPassword">Confirm Password</label>
+          <div class="controls">
+            <input type="password" id="inputPassword" name="password_confirmation" placeholder="Password">
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="controls">
+            <button type="submit" class="btn">Sign in</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+ </div>

@@ -1,0 +1,15 @@
+.form-center{
+	margin: 0 auto;
+	display: block;
+}
+
+.sidebar li{
+	text-align: center;
+}
+
+.recipie-highlight h6{ 
+	display:  inline-block;
+}
+.recipie-highlight li i{
+	/*float: left;*/
+}
