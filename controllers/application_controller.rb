@@ -7,6 +7,7 @@ class ApplicationController < Sinatra::Base
 	use Rack::MethodOverride
 	register Sinatra::ActiveRecordExtension 
 	register Sinatra::Twitter::Bootstrap::Assets
+	ActiveRecord::Base.include_root_in_json = true
 	use Rack::Flash
 	helpers Sinatra::RedirectWithFlash
 	helpers Sinatra::Cookies

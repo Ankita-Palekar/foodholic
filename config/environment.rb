@@ -19,11 +19,11 @@ require 'sinatra/cookies'
 require './models/user.rb'
 require './models/recipe.rb'
 require './models/rating.rb'
-require './models/text.rb'
+require './models/ingredient.rb'
 require './controllers/application_controller.rb'
 require './controllers/users_controller.rb'
 require './controllers/recipes_controller.rb'
-
+require './controllers/ingredients_controller.rb'
 # require_directory('./models')
 # require_directory('./controllers')
 # Bundler.require(:default)

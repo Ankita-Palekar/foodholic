@@ -4,8 +4,10 @@
   <%= bootstrap_assets %>
    
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheets" href="main.css">
-
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/css/bootstrap-select.min.css" />
+  <link rel="stylesheet" href="stylesheets/main.css">
+  <link rel="stylesheet" href="stylesheets/bootstrap-multiselect.css">
+  <link rel="stylesheet" href="stylesheets/bootstrap-tagsinput.css"> 
   </head>
   <body>
   <header>
@@ -19,38 +21,41 @@
        </ul>
 
        <ul  class="nav pull-right">
-       	<li> <a href="/logout">logout</a></li>
+        <li> <a href="/logout">logout</a></li>
        </ul>
      </div>
    </div>
   </header>
     <div class="container">
-    	<div class="row-fluid">
+      <div class="row-fluid">
 
-	     <section>
-	     	<div class="row">
-		     	<div class="span12">
-		     		<div class="span3">
-				     <div class="sidebar" data-spy="affix-top" data-offset-top="200">
-				     	<ul class="nav nav-list">
-				     		<li>Veg</li>
-				     		<li>Non-veg</li>
-				     		<li>Meals</li>
-				     		<li>Breakfast</li>
-				     	</ul>
-				     </div>
-		     		</div>
-		     		<div class="span9">
-	    				<%= yield %>
-		     		</div>	
-		     	</div>
-	     	</div>
-	     </section>
-    	</div>
+       <section>
+        <div class="row">
+          <div class="span12">
+            <div class="span3">
+             <div class="sidebar" data-spy="affix-top" data-offset-top="200">
+              <ul class="nav nav-list">
+                <li>Veg</li>
+                <li>Non-veg</li>
+                <li>Meals</li>
+                <li>Breakfast</li>
+              </ul>
+             </div>
+            </div>
+            <div class="span9">
+              <%= yield %>
+            </div>  
+          </div>
+        </div>
+       </section>
+      </div>
     </div>
-  <script src="holder.min.js"></script>
-  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-	<script src="public/javascripts/ratings.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="javascripts/underscore-min.js"></script>
+  <script type="text/javascript" src="javascripts/bootstrap-multiselect.js"></script>
+  <script type="text/javascript" src="javascripts/ratings.js"></script>
+  <script type="text/javascript" src="javascripts/custom_select.js"></script>
+  <script type="text/javascript" src="javascripts/bootstrap-tagsinput.js"></script>
   </body>
 </html>

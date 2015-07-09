@@ -25,6 +25,11 @@ map "/recipes" do
 end 
 
 
+
+map "/ingredients" do
+	run IngredientsController
+end 
+
 run ApplicationController
 
 #code for runnning stand alon app

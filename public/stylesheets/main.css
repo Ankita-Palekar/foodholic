@@ -1,15 +1,10 @@
-body{
-	background-color: #C75757;
-}
-
-.form-center{
+ .form-center{
 	margin: 0 auto;
 	display: block;
 }
 
 .sidebar li{
-	text-align: center;
-	background-color: #24BE6B;
+	/*text-align: center;*/
 }
 
 .recipe-highlight h6{ 

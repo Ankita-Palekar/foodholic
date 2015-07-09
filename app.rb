@@ -9,7 +9,8 @@ require './models/user.rb'
 require './models/recipe.rb'
 require './models/rating.rb'
 require './models/text.rb'
-
+require './models/ingredient.rb'
+require './models/ingredient_recipe.rb'
 
 configure :development do
 	set :database, 'postgres://foodholic:foodholic@localhost/foodholic'

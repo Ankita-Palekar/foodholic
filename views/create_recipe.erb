@@ -38,6 +38,16 @@
 		    	<input type="hidden" name="login" value=<%= cookies[:login]%>>
 		    </div>
 		    <br>
+		    <div class="controls">
+		    <label for="title">Select your ingredients below</label>
+					<select id="select-ingredients" multiple="multiple">
+					</select>
+		    </div>
+		    <div class="controls">
+		    <label for="add-ingredients">Can add more ingredients</label>
+		    	<input class="span5 add-ingredients"  name="add_ingredients" type="text" data-role="tagsinput" placeholder="example... pumpkin">
+		    	<button class='btn btn-default' id="add-ingredients">Click to add</button>
+		    </div>
 		    <button type="submit" class="btn">Submit</button>
 			</form>
 		</div>
