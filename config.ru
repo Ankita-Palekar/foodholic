@@ -4,25 +4,24 @@
 #code for runnign app with rackup
 
 require "./config/environment"
+
 use Rack::Session::Cookie, 
    :path => '/',
    :expire_after => 14400, # In seconds
 	 :secret => 'session_set'
 
-map "/public" do
- run Rack::Directory.new("./public")
-end
+ 
 
 map "/user" do
 	run UserController 
 end  
 
-map "/recipie" do
-	run RecipiesController
+map "/recipe" do
+	run RecipesController
 end 
 
-map "/recipies" do
-	run RecipiesController
+map "/recipes" do
+	run RecipesController
 end 
 
 

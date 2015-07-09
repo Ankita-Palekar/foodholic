@@ -1,0 +1,37 @@
+<% 
+	if admin?
+%>
+
+<% @counter = 0%>
+<% @recipes.each do |recipe| %>
+	<%= if @counter == 0 
+				"<div class='row'> <div class='span12'>"
+			end%>
+			<div class="span4 offset1">
+				<ul class="thumbnails">
+				  <li class="span12">
+				     <a href='recipes/<%= "#{recipe.id}"%>'>
+					    <div class="thumbnail">
+					      <img src="http://lorempixel.com/200/200/food/?<%= recipe.id %>" alt=<%= recipe.title %>>
+					      <div class="recipe-highlight">
+						      <h5><%= recipe.title %></h5>
+						      <%= recipe.ratings_count %> <i class="icon-star"></i> 
+										<button id="rate-recipe" data-user-id="<%= cookies[:id] %>" data-recipe-id="<%= recipe.id %>"><i class="icon-star"></i></button>
+					      </div>
+					    </div>
+							</a>
+				  </li>
+				</ul>	
+			</div>
+	<% @counter = @counter + 1
+		if @counter == 2
+			@counter = 0 %>
+	</div></div>
+<%
+	end
+end%>
+
+<% else 
+		redirect "/login"
+ end %>
+

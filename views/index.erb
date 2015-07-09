@@ -1,0 +1,18 @@
+<% 
+	if admin?
+%>
+
+	<div class="page-header">
+		<h3>
+			Welcome to the world of recipes
+		</h3>
+	</div>
+	<br>
+	<a href="recipes/create" class="btn btn-large">Create New recipe</a>
+
+	</br>
+	 <%= "#{session[:id]}" "#{session[:login]}" %>
+ 
+<% else 
+		redirect "/login"
+ end %>

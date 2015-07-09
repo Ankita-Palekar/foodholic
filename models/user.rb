@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-	has_many :recipies
+	has_many :recipes
 	has_many :ratings
 
 	EMAIL_REGEX	=	/([A-Z]|[a-z]|[0-9])\w+(.)*@([a-z]|[A-Z]|[0-9])\w+(.)([a-z]|[A-z]|[0-9])+/

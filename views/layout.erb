@@ -4,21 +4,28 @@
   <%= bootstrap_assets %>
    
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="public/stylesheets/main.css">
+  <link rel="stylesheets" href="main.css">
+
   </head>
   <body>
-    <div class="contianer">
+  <header>
+   <div class="navbar">
+     <div class="navbar-inner">
+       <a class="brand" href="/">Foodholic</a>
+       <ul class="nav">
+         <li class="active"><a href="/">Home</a></li>
+         <li><a href="/recipes">recipes</a></li>
+         <li><a href="/recipes/create">create</a></li>
+       </ul>
+
+       <ul  class="nav pull-right">
+       	<li> <a href="/logout">logout</a></li>
+       </ul>
+     </div>
+   </div>
+  </header>
+    <div class="container">
     	<div class="row-fluid">
-	     <div class="navbar">
-	       <div class="navbar-inner">
-	         <a class="brand" href="#">Foodholic</a>
-	         <ul class="nav">
-	           <li class="active"><a href="#">Home</a></li>
-	           <li><a href="/recipies">Recipies</a></li>
-	           <li><a href="#">create</a></li>
-	         </ul>
-	       </div>
-	     </div>
 
 	     <section>
 	     	<div class="row">
@@ -39,9 +46,11 @@
 		     	</div>
 	     	</div>
 	     </section>
-
     	</div>
     </div>
-  <script src="public/javascripts/holder.min.js"></script>
+  <script src="holder.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script src="public/javascripts/ratings.js"></script>
   </body>
 </html>

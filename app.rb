@@ -6,7 +6,7 @@ require 'sinatra/activerecord'
 require 'digest/sha1'
 # require 'sinatra/flash'
 require './models/user.rb'
-require './models/recipie.rb'
+require './models/recipe.rb'
 require './models/rating.rb'
 require './models/text.rb'
 
@@ -84,26 +84,26 @@ post '/login' do
 	end
 end
 
-get '/recipie/new' do
-	erb :new_recipie
+get '/recipe/new' do
+	erb :new_recipe
 end
 
-post '/recipie/new' do
+post '/recipe/new' do
 	@login = params[:login]
 	@user_id = params[:user_id]
 	@rec_array = params.slice("title","method","ingredients","user_id")
-	@recipie = Recipie.create(@rec_array)
+	@recipe = Recipe.create(@rec_array)
 	 # TODO needs to check if session exists before saving
-	if @recipie.save
-		redirect('/recipie/:#{@recipie.id}')
+	if @recipe.save
+		redirect('/recipe/:#{@recipe.id}')
 	else
-		"There was error in your recipie"
+		"There was error in your recipe"
 	end		 
 end
 
 
-get '/recipie/:{id}' do
-	erb :recipie
+get '/recipe/:{id}' do
+	erb :recipe
 end
 
 

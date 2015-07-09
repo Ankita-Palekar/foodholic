@@ -1,0 +1,52 @@
+<!-- 
+<form action="/recipes/edit/<%= @recipe.id %>" method="post">
+	<label for="title">:title</label>
+	<input type="text" name="title" value=<%= @recipe.title  %>>
+	<label for="Ingredients">:Ingredients</label>
+	<input type="textarea" name="ingredients" value=<%= @recipe.ingredients  %>>
+	<label for="method">Method:</label>
+	<textarea name="method" cols="30" rows="10" >
+		<%= @recipe.method  %>
+	</textarea>
+	<input type="hidden" name="user_id" value=<%= cookies[:id]%>>
+	<input type="hidden" name="login" value=<%= cookies[:login]%>>
+	<input type="submit">
+</form> 
+ -->
+
+ <% 
+ 	if admin?
+ %>
+	<div class="row">
+		<div class="span12">
+			<form action="/recipes/edit/<%= @recipe.id %>" method="post">	
+				<div class="controls">
+		 			<label for="title">recipe Title</label>
+			    <input class="span5" name="title" type="title" value=<%= @recipe.title%>>
+				</div>
+		   <!--  <div class="control">
+					<label for="ingredients">ingredients</label>
+			    <textarea class="span5" name="ingredients"  rows="3" col="20">
+			    	<%= @recipe.ingredients  %>
+			    </textarea>
+		    </div> -->
+		    <div class="controls">
+			    <label for="title">Method</label>
+			    <textarea class="span6" name="method"   rows="10" col="20">
+			    	<%= @recipe.method  %>
+			    </textarea>
+		    </div>
+		    <div class="controls">
+		    	<input type="hidden" name="user_id" value=<%= cookies[:id]%>>
+		    	<input type="hidden" name="login" value=<%= cookies[:login]%>>
+		    </div>
+		    <br>
+		    <button type="submit" class="btn">Submit</button>
+			</form>
+		</div>
+	</div>
+ <% else 
+ 		redirect "/login"
+  end %>
+
+

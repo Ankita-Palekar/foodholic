@@ -1,15 +1,17 @@
 class ApplicationController < Sinatra::Base
+
 	set	:views, Proc.new	{File.join(root, "../views/")}
+	set :public_folder , Proc.new {File.join(root,"../public")}
+	enable :static
 	enable :sessions, :method_override
 	use Rack::MethodOverride
 	register Sinatra::ActiveRecordExtension 
 	register Sinatra::Twitter::Bootstrap::Assets
 	use Rack::Flash
-
+	helpers Sinatra::RedirectWithFlash
 	helpers Sinatra::Cookies
 	
-
-	not_found{erb :not_found}
+	not_found{redirect "/404"}
 
 	helpers do
 		def admin?
@@ -17,7 +19,9 @@ class ApplicationController < Sinatra::Base
 		end
 	end
 
-
+	get '/404' do
+		erb :not_found
+	end
 
 	get '/login' do
 		erb :login, :layout => :auth_layout
@@ -30,11 +34,12 @@ class ApplicationController < Sinatra::Base
  	 		session[:login] = true
  	 		session[:id] = @id
  	 		cookies[:login] = true
- 	 		cookies[:id] = @id
- 	 		redirect ("/home")
+ 	 		cookies[:id] = @id 
+ 	 		redirect ("/")
 	 	else
 	 		flash[:notice] = "EmailId password do not match"  
-			erb :login 
+	 		puts "#{flash[:notice]}"
+			redirect "/login"
 		end
 	end
 
@@ -43,9 +48,8 @@ class ApplicationController < Sinatra::Base
  	end
 	 	   
  	post '/signup' do
- 		 
-
  		@user = User.new(params)
+ 		puts params
  		if @user.save
  			Pony.mail({
  			  :to => params[:email],
@@ -60,22 +64,23 @@ class ApplicationController < Sinatra::Base
  			    :domain               => "localhost:9292" # the HELO domain provided by the client to the server
  			  }
  			})
- 			erb :home	
+
+ 			redirect '/'
  		else
  			flash[:error] = @user.errors.full_messages
  			erb :signup
  		end
  	end	
 
- 	get '/home' do
- 		erb :home
+ 	get '/' do
+ 		erb :index
  	end
 
  	get '/logout' do
  		session[:login] = false
- 		cookies[:login] = false
- 		cookies[:id] = nil
+ 		cookies.delete :login
+ 		cookies.delete :id
  		session.clear
- 		erb :login
+ 		redirect "/login"
  	end
 end

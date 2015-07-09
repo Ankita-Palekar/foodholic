@@ -1,4 +1,4 @@
 class Rating < ActiveRecord::Base
  belongs_to	:user
- belongs_to :recipies
+ belongs_to :recipes
 end

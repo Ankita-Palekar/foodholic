@@ -1,6 +1,6 @@
-class CreateRecipies < ActiveRecord::Migration
+class CreateRecipes < ActiveRecord::Migration
   def change
-  	create_table :recipies do |t|
+  	create_table :recipes do |t|
   		t.belongs_to 	:user, index:true
   		t.string			:title
   		t.text				:ingredients

@@ -11,28 +11,36 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150707111426) do
+ActiveRecord::Schema.define(:version => 20150709072141) do
+
+  create_table "ingredients", :force => true do |t|
+    t.string "name"
+  end
+
+  create_table "ingredients_recipes", :force => true do |t|
+    t.integer "recipes_id"
+    t.integer "ingredients_id"
+  end
 
   create_table "ratings", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "recipie_id"
+    t.integer  "recipe_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "ratings", ["recipie_id"], :name => "index_ratings_on_recipie_id"
+  add_index "ratings", ["recipe_id"], :name => "index_ratings_on_recipie_id"
   add_index "ratings", ["user_id"], :name => "index_ratings_on_user_id"
 
-  create_table "recipies", :force => true do |t|
+  create_table "recipes", :force => true do |t|
     t.integer  "user_id"
-    t.string   "title",       :limit => nil
-    t.text     "ingredients"
+    t.string   "title",      :limit => nil
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "method"
   end
 
-  add_index "recipies", ["user_id"], :name => "index_recipies_on_user_id"
+  add_index "recipes", ["user_id"], :name => "index_recipies_on_user_id"
 
   create_table "texts", :force => true do |t|
     t.string   "texts"

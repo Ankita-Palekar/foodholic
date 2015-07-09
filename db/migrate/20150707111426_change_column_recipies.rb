@@ -1,6 +1,6 @@
-class ChangeColumnRecipies < ActiveRecord::Migration
+class ChangeColumnRecipes < ActiveRecord::Migration
   def change
-  	rename_column(:recipies, :methods, :method)
-  	change_column(:recipies, :method, :text)
+  	rename_column(:recipes, :methods, :method)
+  	change_column(:recipes, :method, :text)
   end
 end

@@ -1,6 +1,6 @@
 class UpdateCol < ActiveRecord::Migration
   def change
-  	remove_column :recipies, :mehtod
-  	add_column :recipies, :methods ,:string
+  	remove_column :recipes, :mehtod
+  	add_column :recipes, :methods ,:string
   end
 end
