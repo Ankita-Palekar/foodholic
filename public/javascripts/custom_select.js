@@ -64,9 +64,16 @@ $(document).ready(function() {
 
   $('#add-ingredients').on("click",function(e){
     e.preventDefault();
+    var multi_select_array = Array()
+    var multiple_object  = $('#select-ingredients option');
+    $(multiple_object).each(function(index,val){
+      multi_select_array.push($(this).val())   
+    })
+    
     ingredients_user = $('.add-ingredients').tagsinput('items');
-    var append_array = _.difference(ingredients_user,ingredients_db)
+    var append_array = _.difference(ingredients_user,multi_select_array)
     var append_string = make_option_template(append_array)
+    
     $('#select-ingredients').prepend(append_string);
     $('#select-ingredients').multiselect('rebuild');
     $('.add-ingredients').tagsinput('removeAll');

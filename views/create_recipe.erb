@@ -8,13 +8,26 @@
 				  <div class="controls">
 				    <% if flash[:error]  %>
 				      <div class="alert alert-error">
-				        <%=   "#{flash[:error]}" %>
+				        <%=   "#{flash[:error]}" 
+				        %>
 				      </div>
 				    <% end %>
 				  </div>
 				</div>
+				<div class="control-groups">
+					<div class="controls">
+						<% if flash[:notice]  %>
+						  <div class="alert fade in">
+		            <button type="button" class="close" data-dismiss="alert">×</button>
+						    <%=    
+						    	"#{flash[:notice]}"
+						    %>
+						  </div>
+						<% end %>
+					</div>
+				</div>
 				<div class="controls">
-		 			<label for="title">recipe Title</label>
+		 			<label for="title">Enter your Recipe Title</label>
 			    <input class="span5" name="title" type="text" placeholder="title">
 				</div>
 		    <div class="controls">
@@ -22,11 +35,13 @@
 					<select id="select-ingredients" name="ingredients[]" multiple="multiple">
 					</select>
 		    </div>
+		    <br>
 		    <div class="controls">
 		    <label for="add-ingredients">Can add more ingredients</label>
 		    	<input class="span5 add-ingredients"  name="add_ingredients" type="text" data-role="tagsinput" placeholder="example... pumpkin">
 		    	<button class='btn btn-default' id="add-ingredients">Click to add</button>
 		    </div>
+		    <br>
 		    <div class="controls">
 			    <label for="title">Method</label>
 			    <textarea class="span6" name="method"   rows="10" col="20"></textarea>
@@ -37,7 +52,6 @@
 		    </div>
 		    <br>
 				<input id ="db-ingredients" type="hidden" name="db_ingredients" value="">
-
 		    <button type="submit" class="btn">Submit</button>
 			</form>
 		</div>
