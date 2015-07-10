@@ -11,7 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150709072141) do
+ActiveRecord::Schema.define(:version => 20150710015331) do
+
+  create_table "categories", :force => true do |t|
+    t.string "name"
+  end
 
   create_table "ingredients", :force => true do |t|
     t.string "name"
@@ -50,10 +54,11 @@ ActiveRecord::Schema.define(:version => 20150709072141) do
 
   create_table "users", :force => true do |t|
     t.string   "name",            :limit => nil
-    t.string   "email",           :limit => nil, :null => false
-    t.string   "password_digest", :limit => nil, :null => false
+    t.string   "email",           :limit => nil,                  :null => false
+    t.string   "password_digest", :limit => nil,                  :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "admin",                          :default => "f"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
