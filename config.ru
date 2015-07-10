@@ -24,11 +24,14 @@ map "/recipes" do
 	run RecipesController
 end 
 
-
-
 map "/ingredients" do
 	run IngredientsController
 end 
+
+
+map "/categories" do
+	run CategoriesController
+end
 
 run ApplicationController
 

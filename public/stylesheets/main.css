@@ -27,3 +27,10 @@ img{
 a :hover{
 	text-decoration: none;
 }
+
+
+
+.create-category{
+	margin: 0 auto;
+	display: block;
+}

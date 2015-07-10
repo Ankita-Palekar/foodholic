@@ -11,6 +11,7 @@ require './models/rating.rb'
 require './models/text.rb'
 require './models/ingredient.rb'
 require './models/ingredients_recipe.rb'
+require './models/category.rb'
 
 configure :development do
 	set :database, 'postgres://foodholic:foodholic@localhost/foodholic'
